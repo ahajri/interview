@@ -5,6 +5,7 @@
 #
 
 import requests
+import json
 
 try:
 
@@ -45,7 +46,8 @@ try:
     response = requests.get(f'{prediction_endpoint}luis/prediction/v3.0/apps/{appId}/slots/production/predict', headers=headers, params=params)
 
     # Display the results on the console.
-    print(response.json())
+    json_result = response.json()
+    print(json.dumps(json_result, indent=4, sort_keys=True))
 
 
 except Exception as e:
